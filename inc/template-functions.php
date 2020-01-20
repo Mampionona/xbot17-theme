@@ -35,3 +35,40 @@ function xbot17_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'xbot17_pingback_header' );
+
+function append_elements_menu_items($items, $args) {
+	switch ($args->theme_location) {
+		case 'primary':
+			$investir = __('Investir', 'xbot17');
+			$investir_url = get_the_permalink(23);
+			$items .= '<li class="menu-item item-invest"><a title="' . $investir . '" href="' . $investir_url . '">' . $investir . '</a></li>';
+
+			$languages = apply_filters('wpml_active_languages', null);
+
+			// var_dump($languages);
+
+			if (is_array($languages) && count($languages)) {
+				$items .= '<li class="menu-item item_lang">';
+					foreach ($languages as $language => $array) {
+						$url = $array['url'];
+						$flag = get_template_directory_uri() . '/assets/images/lang_' . $language . '.png';
+						$native_name = $array['native_name'];
+
+						$items .= '<a class="lang_' . $language . '" href="' . $url . '"><img title="' . $native_name . '" src="' . $flag . '" alt="' . $native_name . '"></a>';
+					}
+				$items .= '</li>';
+			}
+		break;
+
+		case 'footer':
+			$items .= '<li><a href="https://www.facebook.com/Xbot17-348177115853887/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>';
+			$items .= '<li><a href="https://www.instagram.com/xbot17_officiel/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a> </li>';
+	}
+	return $items;
+}
+
+add_filter('wp_nav_menu_items', 'append_elements_menu_items', 10, 2);
+
+function telephone() {
+	return get_theme_mod('telephone');
+}

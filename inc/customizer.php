@@ -25,6 +25,20 @@ function xbot17_customize_register( $wp_customize ) {
 			'render_callback' => 'xbot17_customize_partial_blogdescription',
 		) );
 	}
+
+	$controls = array(
+		'telephone' => __('Téléphone'),
+		//
+	);
+
+	foreach ($controls as $key => $label) {
+		$wp_customize->add_setting( $key );
+		$wp_customize->add_control( $key, array(
+		    'id' => 'id',
+		    'label' => $label,
+		    'section' => 'title_tagline'
+		) );
+	}
 }
 add_action( 'customize_register', 'xbot17_customize_register' );
 
