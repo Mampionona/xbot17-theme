@@ -11135,14 +11135,14 @@ p {
 	text-transform: uppercase
 }
 
-a,
+/* a,
 a:hover,
 a:active,
 a:focus {
 	outline: none;
 	border: none;
 	text-decoration: none
-}
+} */
 
 a {
 	transition: all 0.3s ease 0s
@@ -13663,6 +13663,7 @@ i.fa.fa-instagram {
 	}
 }
 
+.page-template-page-template-ironfx .main-content,
 .page-template-default .main-content {
 	background-color: #fff;
 	padding-bottom: 60px;
@@ -13682,5 +13683,19 @@ i.fa.fa-instagram {
 }
 
 .page-template-page-template-my-account {
+	background-color: #fff;
+}
+
+.page-template-page-template-ironfx h1 {
+	text-align: left;
+}
+
+.list-group-item.logout-url {
+	background-color: red;
+	color: #fff;
+}
+
+.list-group-item.logout-url:hover {
+	color: red;
 	background-color: #fff;
 }
