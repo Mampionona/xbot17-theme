@@ -13662,3 +13662,25 @@ i.fa.fa-instagram {
 		margin: 0 17px 0 0;
 	}
 }
+
+.page-template-default .main-content {
+	background-color: #fff;
+	padding-bottom: 60px;
+}
+
+.page-content h1 {
+	color: #000;
+	font-family: Poppins;
+	font-weight: 600;
+	font-size: 36px;
+	margin-bottom: 60px;
+	text-align: center;
+}
+
+.page-content {
+	margin-top: 60px;
+}
+
+.page-template-page-template-my-account {
+	background-color: #fff;
+}

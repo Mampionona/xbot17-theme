@@ -13,13 +13,13 @@
 
 	</div><!-- #content -->
 
-	<footer>
+	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-5 col-sm-5 text-left copy-wrapper">
+				<div class="col-sm-4 text-left copy-wrapper">
 					&copy; <?php printf(esc_html__('Copyright %s. Tous droits réservés.', 'xbot17'), date('Y')); ?>
 				</div>
-				<div class="col-md-7 col-sm-7">
+				<div class="col-sm-8">
 					<?php wp_nav_menu(array(
 						'theme_location' => 'footer',
 						'menu_class' => 'menu',

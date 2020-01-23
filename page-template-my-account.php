@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages
+ * Template name: Mon compte
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -14,15 +14,6 @@
  ?>
 <?php get_header(); ?>
 <?php while (have_posts()): the_post(); ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="page-content">
-                    <h1><?php the_title(); ?></h1>
-                    <?php the_content(); ?>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php the_content(); ?>
 <?php endwhile; ?>
 <?php get_footer();

@@ -40,7 +40,7 @@ function append_elements_menu_items($items, $args) {
 	switch ($args->theme_location) {
 		case 'primary':
 			$investir = __('Investir', 'xbot17');
-			$investir_url = get_the_permalink(23);
+			$investir_url = get_the_permalink(15);
 			$items .= '<li class="menu-item item-invest"><a title="' . $investir . '" href="' . $investir_url . '">' . $investir . '</a></li>';
 
 			$languages = apply_filters('wpml_active_languages', null);
@@ -49,12 +49,19 @@ function append_elements_menu_items($items, $args) {
 
 			if (is_array($languages) && count($languages)) {
 				$items .= '<li class="menu-item item_lang">';
-					foreach ($languages as $language => $array) {
-						$url = $array['url'];
-						$flag = get_template_directory_uri() . '/assets/images/lang_' . $language . '.png';
-						$native_name = $array['native_name'];
+					foreach ($languages as $_ => $language) {
+						$url = $language['url'];
+						$code = $language['code'];
+						$native_name = $language['native_name'];
+						$flag = get_template_directory_uri() . '/assets/images/lang_' . $code . '.png';
+						$classes = array('lang-item', 'lang_' . $code);
 
-						$items .= '<a class="lang_' . $language . '" href="' . $url . '"><img title="' . $native_name . '" src="' . $flag . '" alt="' . $native_name . '"></a>';
+						if ($language['active']) {
+							$classes[] = 'active';
+						}
+
+						$classes = join(' ', $classes);
+						$items .= '<a class="' . $classes . '" href="' . $url . '"><img title="' . $native_name . '" src="' . $flag . '" alt="' . $native_name . '"></a>';
 					}
 				$items .= '</li>';
 			}
@@ -72,3 +79,16 @@ add_filter('wp_nav_menu_items', 'append_elements_menu_items', 10, 2);
 function telephone() {
 	return get_theme_mod('telephone');
 }
+
+function get_translated_post_id($post_id) {
+	if (function_exists('icl_object_id')) {
+		return icl_object_id($post_id, 'page', false, ICL_LANGUAGE_CODE);
+	}
+	return $post_id;
+}
+
+function wp_title_cb($title) {
+	$name = get_bloginfo('name');
+	return $title . $name;
+}
+add_filter('wp_title', 'wp_title_cb', 10, 1);
