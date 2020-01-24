@@ -92,3 +92,12 @@ function wp_title_cb($title) {
 	return $title . $name;
 }
 add_filter('wp_title', 'wp_title_cb', 10, 1);
+
+function page_redirect() {
+	if (is_front_page()) {
+		wp_redirect(apply_filters('translated_post_link', 13));
+		exit;
+	}
+}
+
+add_action('template_redirect', 'page_redirect');
