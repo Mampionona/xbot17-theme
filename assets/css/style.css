@@ -13486,20 +13486,6 @@ input.border_red {
 	display: inline-block;
 }
 
-.lang_es {
-	filter: grayscale(1);
-	webkit-filter: grayscale(1);
-	-moz-filter: grayscale(1);
-	-o-filter: grayscale(1);
-}
-
-.lang_es:hover {
-	filter: grayscale(0);
-	webkit-filter: grayscale(0);
-	-moz-filter: grayscale(0);
-	-o-filter: grayscale(0);
-}
-
 .banner-rappel {
 	background: url(../images/slogan.png);
 	background-repeat: repeat-x;
@@ -13620,22 +13606,14 @@ p.slogan {
 	}
 }
 
-.lang_fr {
-	filter: grayscale(0);
-	webkit-filter: grayscale(0);
-	-moz-filter: grayscale(0);
-	-o-filter: grayscale(0);
-}
-
-.lang_es,
-.lang_en {
+.lang-item:not(.active) {
 	filter: grayscale(1);
 	webkit-filter: grayscale(1);
 	-moz-filter: grayscale(1);
 	-o-filter: grayscale(1);
 }
 
-.lang_en:hover {
+.lang-item:hover {
 	filter: grayscale(0);
 	webkit-filter: grayscale(0);
 	-moz-filter: grayscale(0);
