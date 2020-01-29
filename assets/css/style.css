@@ -3079,7 +3079,8 @@ label {
 	display: inline-block;
 	max-width: 100%;
 	margin-bottom: 5px;
-	font-weight: 700
+	font-weight: 700;
+	font-size: 14px;
 }
 
 input[type=search] {
@@ -13676,4 +13677,44 @@ i.fa.fa-instagram {
 .list-group-item.logout-url:hover {
 	color: red;
 	background-color: #fff;
+}
+
+.page-template-page-template-ironfx .page-content p {
+	font-weight: 700;
+}
+
+.side-nav .list-group .list-group-item {
+	font-weight: 700;
+}
+
+#reset-pass-submit,
+.submit-btn {
+    background: #3875ba;
+    border: 1px solid #3875ba;
+    color: #fff;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 9px 15px;
+    min-width: 193px;
+}
+
+#reset-pass-submit:hover,
+.submit-btn:hover {
+    background: #fff;
+    color: #3875ba;
+}
+
+.account-page-form legend {
+	border-bottom: 0;
+	color: #3875ba;
+}
+
+#somfrp_user_info,
+#som_new_user_pass_again,
+.account-page-form input[type=password] {
+	border: 1px solid #d0d0d0;
+    border-radius: 0;
+    height: 40px;
+    padding: 9px 15px;
+    width: 100%;
 }

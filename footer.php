@@ -40,6 +40,8 @@
 	</footer>
 </div>
 
+<?php get_template_part('template-parts/demande-rappel'); ?>
+
 <?php wp_footer(); ?>
 
 </body>

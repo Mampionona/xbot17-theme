@@ -95,9 +95,48 @@ add_filter('wp_title', 'wp_title_cb', 10, 1);
 
 function page_redirect() {
 	if (is_front_page()) {
-		wp_redirect(apply_filters('translated_post_link', 13));
+		wp_redirect(custom_home_url());
 		exit;
 	}
 }
 
 add_action('template_redirect', 'page_redirect');
+
+function custom_home_url() {
+	$home_url = home_url('/');
+	$home_url = str_replace('/_', '', $home_url);
+	return $home_url;
+}
+
+function ajax_demande_rappel() {
+	$destinataire = 'cyril@xbot17.com';
+
+	if( isset($_POST['nom_rappel']) && $_POST['nom_rappel'] !== '' && isset($_POST['email_rappel']) && $_POST['email_rappel'] !== '' && isset($_POST['telephone_rappel']) && $_POST['telephone_rappel'] !== '' ) {
+		$contenu = "<strong>Nom : </strong>" . sanitize_text_field($_POST['nom_rappel'])."<br>";
+		$contenu .= "<strong>Email : </strong>" . sanitize_text_field($_POST['email_rappel'])."<br>";
+		$contenu .= "<strong>Téléphone : </strong>" . sanitize_text_field($_POST['telephone_rappel'])."<br>";
+		$contenu .= "<strong>Pays : </strong>" . sanitize_text_field($_POST['select_pays'])."<br>";
+		$contenu .= "<strong>Plus d'information : </strong>" . nl2br(stripslashes($_POST['info_rappel']));
+
+		$objet = "Demande de rappel";
+
+		$headers = "MIME-Version: 1.0"."\r\n";
+		$headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
+		$headers .= "From:contact@xbot17.com" . "\r\n"."Reply-To:contact@xbot17.com\r\n" . "X-Mailer:PHP/" . phpversion();
+
+		if (mail($destinataire, $objet, $contenu, $headers)) {
+			$message = "Email envoyé avec succès <i class='fa fa-check' aria-hidden='true'></i>";
+		} else {
+			$message = "Email non envoyé <i class='fa fa-times' aria-hidden='true'></i>";
+		}
+		echo $message;
+	} else {
+		$message = "Veuillez completer tous les champs obligatoires";
+		echo $message;
+	}
+
+	exit;
+}
+
+add_action('wp_ajax_demande_rappel', 'ajax_demande_rappel');
+add_action('wp_ajax_nopriv_demande_rappel', 'ajax_demande_rappel');

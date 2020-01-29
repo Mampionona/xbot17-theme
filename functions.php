@@ -121,7 +121,10 @@ add_action( 'widgets_init', 'xbot17_widgets_init' );
  * Enqueue scripts and styles.
  */
 function xbot17_scripts() {
-	wp_enqueue_style( 'xbot17-style', get_template_directory_uri() . '/assets/css/style.css' );
+	wp_enqueue_style( 'xbot17-style', get_template_directory_uri() . '/assets/css/style.min.css' );
+	wp_enqueue_script('bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'));
+	wp_enqueue_script('custom', get_template_directory_uri() . '/assets/js/custom.js', array('jquery'));
+	wp_localize_script('custom', 'xbot17_theme', array('ajaxurl' => admin_url('admin-ajax.php')));
 }
 add_action( 'wp_enqueue_scripts', 'xbot17_scripts' );
 
