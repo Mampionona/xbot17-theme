@@ -13683,6 +13683,10 @@ i.fa.fa-instagram {
 	font-weight: 700;
 }
 
+.page-template-page-template-ironfx .page-content #inscription-ok p {
+	font-weight: 300;
+}
+
 .side-nav .list-group .list-group-item {
 	font-weight: 700;
 }
@@ -13717,4 +13721,8 @@ i.fa.fa-instagram {
     height: 40px;
     padding: 9px 15px;
     width: 100%;
+}
+
+.register.edit-profile {
+	max-width: 500px;
 }
